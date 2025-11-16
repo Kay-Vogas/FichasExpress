@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Conta</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <div class="central-container">
+
+      <div class="caixa">
+        <form action="AutenticaoController" method="post">
+          <div class="inputs-caixa">
+            <div>
+              <label for="">Email:</label>
+              <input type="email" name="login" id="login" placeholder="Email">
+            </div>
+
+            <div>
+              <label for="">Senha:</label>
+              <input type="password" name="senha" id="senha" placeholder="Senha">
+            </div>
+            
+            <div>
+              <label for="">Confirmar Senha:</label>
+              <input type="password" name="senha" id="senha" placeholder="Confirmar Senha">
+            </div>
+
+            <input type="button" value="Registrar">
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

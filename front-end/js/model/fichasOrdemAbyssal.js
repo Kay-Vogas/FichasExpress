@@ -1,0 +1,4 @@
+class fichasOrdemAbyssal{
+    _personagem;
+    
+}
