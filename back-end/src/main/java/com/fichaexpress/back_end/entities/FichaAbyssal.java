@@ -30,7 +30,7 @@ public class FichaAbyssal {
     private Integer sanidade;
     private Integer pe;
 
-    //LEMBRAR REDUÇÃO DE SANIDADE
+    //LEMBRAR Dados de REDUÇÃO DE SANIDADE
 
 
     public void calcularPV(Integer atributoVigor){
