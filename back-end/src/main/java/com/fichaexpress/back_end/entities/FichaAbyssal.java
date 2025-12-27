@@ -50,11 +50,11 @@ public class FichaAbyssal {
         if(this.classes == null) return;
 
         if(classes.equals("COMBATENTE")){
-
+            this.pe = (2+atributoPresenca) + (nex * (2 + atributoPresenca));
         }else if(classes.equals("ESPECIALISTA")){
-
+            this.pe = (3+atributoPresenca) + (nex * (3 + atributoPresenca));
         } else if (classes.equals("OCULTISTA")) {
-
+            this.pe = (4+atributoPresenca) + (nex * (4 + atributoPresenca));
         }
     }
 
