@@ -58,4 +58,16 @@ public class FichaAbyssal {
         }
     }
 
+    public void calcularSan(){
+        if(this.classes == null) return;
+
+        if(classes.equals("COMBATENTE")){
+
+        }else if(classes.equals("ESPECIALISTA")){
+
+        } else if (classes.equals("OCULTISTA")) {
+
+        }
+    }
+
 }
