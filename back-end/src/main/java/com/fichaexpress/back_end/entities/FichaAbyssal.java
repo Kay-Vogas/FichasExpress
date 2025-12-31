@@ -1,10 +1,21 @@
 package com.fichaexpress.back_end.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.Random;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
 public class FichaAbyssal {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -30,11 +41,16 @@ public class FichaAbyssal {
     private Integer sanidade;
     private Integer pe;
 
-    //LEMBRAR Dados de REDUÇÃO DE SANIDADE
+    //Dados de REDUÇÃO DE SANIDADE
+    private Integer dadoSanidade;
+
+    public void dadoDeSanidade(){
+        //Random dadoSanidade = new Random();
+        //System.out.println(dadoSanidade.nextInt(4));
+    }
 
 
     public void calcularPV(Integer atributoVigor){
-
         if(this.classes == null) return;
 
         if(classes.equals("COMBATENTE")){
@@ -62,11 +78,11 @@ public class FichaAbyssal {
         if(this.classes == null) return;
 
         if(classes.equals("COMBATENTE")){
-
+            this.sanidade = (12 + (nex * 3)) ;
         }else if(classes.equals("ESPECIALISTA")){
-
+            this.sanidade = (16 + (nex * 4)) ;
         } else if (classes.equals("OCULTISTA")) {
-
+            this.sanidade = (20 + (nex * 5)) ;
         }
     }
 
