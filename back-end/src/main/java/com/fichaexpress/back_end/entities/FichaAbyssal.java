@@ -1,5 +1,6 @@
 package com.fichaexpress.back_end.entities;
 
+<<<<<<< HEAD
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,12 +13,27 @@ import java.util.Random;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
+=======
+<<<<<<< HEAD
+public class FichaAbyssal {
+
+    private String personagemName;
+    private Usuario usuario;
+=======
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+>>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 public class FichaAbyssal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name="user_id",nullable = false)
     private User user;
@@ -25,6 +41,12 @@ public class FichaAbyssal {
     private String personagem;
 
     private Integer nex;
+=======
+    //private User user;
+
+    private String personagem;
+
+>>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 
     private Integer atributoAgilidade;
     private Integer atributoForca;
@@ -32,6 +54,7 @@ public class FichaAbyssal {
     private Integer atributoInteligencia;
     private Integer atributoVigor;
 
+<<<<<<< HEAD
     @Enumerated(EnumType.STRING)
     private ClassesOrdemParanormal classes;
 
@@ -85,5 +108,12 @@ public class FichaAbyssal {
             this.sanidade = (20 + (nex * 5)) ;
         }
     }
+=======
+    private String classeCombatente;
+    private String classeEspecialista;
+    private String classeOcultista;
+
+>>>>>>> 0a36db6315c0648c8f8cca8d6bc9f5c9a0cbac90
+>>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 
 }

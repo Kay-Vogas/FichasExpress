@@ -14,10 +14,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
     @PostMapping("/cadastro")
     @ResponseStatus(HttpStatus.CREATED)
     public User cadastrarUser(@RequestBody User user){
         return userService.cadastrarUser(user);
+=======
+
+    @PostMapping("/casdatro")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User cadastrarUser(@RequestBody User user){
+        return userService.CadastrarUser(user);
+>>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
     }
 
 }
