@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
 import java.util.Optional;
 
-=======
->>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 @Service
 public class UserService {
 
@@ -20,18 +17,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder ;
 
-<<<<<<< HEAD
     public User cadastrarUser(User user){
-=======
-    public User CadastrarUser(User user){
->>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
             String senhaPura =  user.getPassword();
             String senhaCodificada = passwordEncoder.encode(senhaPura);
             user.setPassword(senhaCodificada);
             return userRepository.save(user);
     }
 
-<<<<<<< HEAD
+
     public Boolean loginUser(User user){
 
         Optional<User> usuarioNoBanco = userRepository.findByEmail(user.getEmail());
@@ -48,7 +41,5 @@ public class UserService {
 
         return confirmacaoSenha;
     }
-=======
->>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 
 }

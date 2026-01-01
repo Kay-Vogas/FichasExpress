@@ -2,17 +2,12 @@ package com.fichaexpress.back_end.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-<<<<<<< HEAD
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-=======
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
->>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 
 @Configuration
 public class SecurityConfig {
@@ -22,7 +17,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-<<<<<<< HEAD
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -53,7 +48,4 @@ public class SecurityConfig {
 
                 .build();
     }
-
-=======
->>>>>>> 1c428e8bad15076a0c45ffc2ca9bdd5e33e5f24d
 }
