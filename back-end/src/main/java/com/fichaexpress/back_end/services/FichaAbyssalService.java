@@ -37,7 +37,7 @@ public class FichaAbyssalService {
         fichaAbyssal.calcularPE(fichaAbyssal.getAtributoPresenca());
         fichaAbyssal.calcularSan();
 
-        return fichaAbyssalRepository.save(fichaAbyssalAtualizado);
+        return fichaAbyssalRepository.save(fichaAbyssal);
 
     }
 }
