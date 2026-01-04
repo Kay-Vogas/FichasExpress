@@ -26,8 +26,6 @@ public class FichaAbyssal {
 
     private Integer nex;
 
-    //private User user;
-
     private Integer atributoAgilidade;
     private Integer atributoForca;
     private Integer atributoPresenca;
@@ -46,11 +44,12 @@ public class FichaAbyssal {
     //Dados de REDUÇÃO DE SANIDADE
     private Integer dadoSanidade;
 
-    public void dadoDeSanidade(){
-        //Random dadoSanidade = new Random();
-        //System.out.println(dadoSanidade.nextInt(4));
-    }
+    public void dadoDeSanidade(Integer dadoSanidade) {
 
+        Random ValorDadoSanidade = new Random();
+        System.out.println(ValorDadoSanidade.nextInt(4));
+
+    }
 
     public void calcularPV(Integer atributoVigor){
         if(this.classes == null) return;
