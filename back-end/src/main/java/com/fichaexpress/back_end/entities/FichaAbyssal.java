@@ -45,6 +45,8 @@ public class FichaAbyssal {
     private Integer sanidade;
     private Integer pe;
 
+    private Integer dt;
+
     @Embedded
     private PericiasAbyssal pericias = new PericiasAbyssal();
 
@@ -52,10 +54,8 @@ public class FichaAbyssal {
     private Integer dadoSanidade;
 
     public void dadoDeSanidade(Integer dadoSanidade) {
-
         Random ValorDadoSanidade = new Random();
-        System.out.println(ValorDadoSanidade.nextInt(4));
-
+        System.out.println(ValorDadoSanidade.nextInt(dadoSanidade));
     }
 
     public void atualizarStatus(){
@@ -107,6 +107,14 @@ public class FichaAbyssal {
             this.sanidade = (20 + (nex * 5)) ;
             setSanidade(this.sanidade);
         }
+    }
+
+    public void calcularDt(){
+
+    }
+
+    public void calcularAtributosSomatorio(){
+
     }
 
 }
