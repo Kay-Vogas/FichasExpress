@@ -45,6 +45,9 @@ public class FichaAbyssal {
     private Integer sanidade;
     private Integer pe;
 
+    @Embedded
+    private PericiasAbyssal pericias = new PericiasAbyssal();
+
     //Dados de REDUÇÃO DE SANIDADE
     private Integer dadoSanidade;
 
@@ -53,6 +56,12 @@ public class FichaAbyssal {
         Random ValorDadoSanidade = new Random();
         System.out.println(ValorDadoSanidade.nextInt(4));
 
+    }
+
+    public void atualizarStatus(){
+        calcularPV(this.atributoVigor);
+        calcularPE(this.atributoPresenca);
+        calcularSan();
     }
 
     public void calcularPV(Integer atributoVigor){

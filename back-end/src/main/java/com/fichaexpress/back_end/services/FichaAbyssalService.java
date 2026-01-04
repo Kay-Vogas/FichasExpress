@@ -21,10 +21,9 @@ public class FichaAbyssalService {
     public FichaAbyssal atualizarFichaAbyssal(Long id,FichaAbyssal fichaAbyssalAtualizado){
 
         return fichaAbyssalRepository.findById(id).map(fichaAbyssal->{
+
             fichaAbyssal.setImagemPersonagem(fichaAbyssalAtualizado.getImagemPersonagem());
-
             fichaAbyssal.setPersonagem(fichaAbyssalAtualizado.getPersonagem());
-
             fichaAbyssal.setNex(fichaAbyssalAtualizado.getNex());
             fichaAbyssal.setNe(fichaAbyssalAtualizado.getNe());
 
@@ -34,11 +33,15 @@ public class FichaAbyssalService {
             fichaAbyssal.setAtributoVigor(fichaAbyssalAtualizado.getAtributoVigor());
             fichaAbyssal.setAtributoPresenca(fichaAbyssalAtualizado.getAtributoPresenca());
 
-            fichaAbyssal.calcularPV(fichaAbyssal.getAtributoVigor());
-            fichaAbyssal.calcularPE(fichaAbyssal.getAtributoPresenca());
-            fichaAbyssal.calcularSan();
+            if (fichaAbyssalAtualizado.getPericias() != null) {
+                fichaAbyssal.setPericias(fichaAbyssalAtualizado.getPericias());
+            }
 
-            return fichaAbyssalRepository.save(fichaAbyssal);}).orElse(null);
+
+            fichaAbyssal.atualizarStatus();
+
+            return fichaAbyssalRepository.save(fichaAbyssal);
+        }).orElseThrow(() -> new RuntimeException("Ficha não encontrada"));
 
     }
 }
