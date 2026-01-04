@@ -20,6 +20,8 @@ public class FichaAbyssalService {
 
         fichaAbyssal.setId(id);
 
+        fichaAbyssal.setImagemPersonagem(fichaAbyssalAtualizado.getImagemPersonagem());
+
         fichaAbyssal.setPersonagem(fichaAbyssalAtualizado.getPersonagem());
 
         fichaAbyssal.setNex(fichaAbyssalAtualizado.getNex());

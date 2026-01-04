@@ -22,6 +22,9 @@ public class FichaAbyssal {
     @JoinColumn(name="user_id",nullable = false)
     private User user;
 
+    @Lob
+    private String imagemPersonagem;
+
     private String personagem;
 
     private Integer nex;
