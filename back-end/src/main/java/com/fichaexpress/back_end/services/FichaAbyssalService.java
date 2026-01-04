@@ -15,10 +15,27 @@ public class FichaAbyssalService {
         return fichaAbyssalRepository.save(fichaAbyssal);
     }
 
-    public FichaAbyssal atualizarFichaAbyssal(FichaAbyssal fichaAbyssal){
-        //
+    public FichaAbyssal atualizarFichaAbyssal(Long id,FichaAbyssal fichaAbyssalAtualizado){
+        FichaAbyssal fichaAbyssal = new FichaAbyssal();
 
-        FichaAbyssal fichaAbyssalAtualizado = new FichaAbyssal();
-        return fichaAbyssalRepository.save(fichaAbyssal);
+        fichaAbyssal.setId(id);
+
+        fichaAbyssal.setPersonagem(fichaAbyssalAtualizado.getPersonagem());
+
+        fichaAbyssal.setNex(fichaAbyssalAtualizado.getNex());
+        fichaAbyssal.setNe(fichaAbyssalAtualizado.getNe());
+
+        fichaAbyssal.setAtributoAgilidade(fichaAbyssalAtualizado.getAtributoAgilidade());
+        fichaAbyssal.setAtributoForca(fichaAbyssalAtualizado.getAtributoForca());
+        fichaAbyssal.setAtributoInteligencia(fichaAbyssalAtualizado.getAtributoInteligencia());
+        fichaAbyssal.setAtributoVigor(fichaAbyssalAtualizado.getAtributoVigor());
+        fichaAbyssal.setAtributoPresenca(fichaAbyssalAtualizado.getAtributoPresenca());
+
+        fichaAbyssal.calcularPV(fichaAbyssal.getAtributoVigor());
+        fichaAbyssal.calcularPE(fichaAbyssal.getAtributoPresenca());
+        fichaAbyssal.calcularSan();
+
+        return fichaAbyssalRepository.save(fichaAbyssalAtualizado);
+
     }
 }

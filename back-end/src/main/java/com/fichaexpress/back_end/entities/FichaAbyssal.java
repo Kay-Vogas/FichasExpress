@@ -25,6 +25,7 @@ public class FichaAbyssal {
     private String personagem;
 
     private Integer nex;
+    private Integer ne;
 
     private Integer atributoAgilidade;
     private Integer atributoForca;
@@ -56,10 +57,13 @@ public class FichaAbyssal {
 
         if(classes.equals("COMBATENTE")){
             this.pv = (20+atributoVigor) + (nex * (4 + atributoVigor));
+            setPv(this.pv);
         } else if(classes.equals("ESPECIALISTA")){
             this.pv = (16+atributoVigor) + (nex * (3 + atributoVigor));
+            setPv(this.pv);
         } else if (classes.equals("OCULTISTA")) {
             this.pv = (12+atributoVigor) + (nex * (2 + atributoVigor));
+            setPv(this.pv);
         }
     }
 
@@ -68,10 +72,13 @@ public class FichaAbyssal {
 
         if(classes.equals("COMBATENTE")){
             this.pe = (2+atributoPresenca) + (nex * (2 + atributoPresenca));
+            setPe(this.pe);
         }else if(classes.equals("ESPECIALISTA")){
             this.pe = (3+atributoPresenca) + (nex * (3 + atributoPresenca));
+            setPe(this.pe);
         } else if (classes.equals("OCULTISTA")) {
             this.pe = (4+atributoPresenca) + (nex * (4 + atributoPresenca));
+            setPe(this.pe);
         }
     }
 
@@ -80,10 +87,14 @@ public class FichaAbyssal {
 
         if(classes.equals("COMBATENTE")){
             this.sanidade = (12 + (nex * 3)) ;
+            setSanidade(this.sanidade);
         }else if(classes.equals("ESPECIALISTA")){
             this.sanidade = (16 + (nex * 4)) ;
+            setSanidade(this.sanidade);
         } else if (classes.equals("OCULTISTA")) {
             this.sanidade = (20 + (nex * 5)) ;
+            setSanidade(this.sanidade);
         }
     }
+
 }
