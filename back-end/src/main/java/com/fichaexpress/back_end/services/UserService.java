@@ -5,6 +5,7 @@ import com.fichaexpress.back_end.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder ;
 
+    @Transactional
     public User cadastrarUser(User user){
             String senhaPura =  user.getPassword();
             String senhaCodificada = passwordEncoder.encode(senhaPura);
@@ -25,6 +27,7 @@ public class UserService {
     }
 
 
+    @Transactional
     public Boolean loginUser(User user){
 
         Optional<User> usuarioNoBanco = userRepository.findByEmail(user.getEmail());

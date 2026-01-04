@@ -4,6 +4,7 @@ import com.fichaexpress.back_end.entities.FichaAbyssal;
 import com.fichaexpress.back_end.repositories.FichaAbyssalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class FichaAbyssalService {
@@ -11,10 +12,12 @@ public class FichaAbyssalService {
     @Autowired
     private FichaAbyssalRepository fichaAbyssalRepository;
 
+    @Transactional
     public FichaAbyssal createFichaAbyssal(FichaAbyssal fichaAbyssal){
         return fichaAbyssalRepository.save(fichaAbyssal);
     }
 
+    @Transactional
     public FichaAbyssal atualizarFichaAbyssal(Long id,FichaAbyssal fichaAbyssalAtualizado){
 
         return fichaAbyssalRepository.findById(id).map(fichaAbyssal->{
