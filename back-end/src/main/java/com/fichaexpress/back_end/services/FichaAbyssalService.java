@@ -16,28 +16,26 @@ public class FichaAbyssalService {
     }
 
     public FichaAbyssal atualizarFichaAbyssal(Long id,FichaAbyssal fichaAbyssalAtualizado){
-        FichaAbyssal fichaAbyssal = new FichaAbyssal();
 
-        fichaAbyssal.setId(id);
+        return fichaAbyssalRepository.findById(id).map(fichaAbyssal->{
+            fichaAbyssal.setImagemPersonagem(fichaAbyssalAtualizado.getImagemPersonagem());
 
-        fichaAbyssal.setImagemPersonagem(fichaAbyssalAtualizado.getImagemPersonagem());
+            fichaAbyssal.setPersonagem(fichaAbyssalAtualizado.getPersonagem());
 
-        fichaAbyssal.setPersonagem(fichaAbyssalAtualizado.getPersonagem());
+            fichaAbyssal.setNex(fichaAbyssalAtualizado.getNex());
+            fichaAbyssal.setNe(fichaAbyssalAtualizado.getNe());
 
-        fichaAbyssal.setNex(fichaAbyssalAtualizado.getNex());
-        fichaAbyssal.setNe(fichaAbyssalAtualizado.getNe());
+            fichaAbyssal.setAtributoAgilidade(fichaAbyssalAtualizado.getAtributoAgilidade());
+            fichaAbyssal.setAtributoForca(fichaAbyssalAtualizado.getAtributoForca());
+            fichaAbyssal.setAtributoInteligencia(fichaAbyssalAtualizado.getAtributoInteligencia());
+            fichaAbyssal.setAtributoVigor(fichaAbyssalAtualizado.getAtributoVigor());
+            fichaAbyssal.setAtributoPresenca(fichaAbyssalAtualizado.getAtributoPresenca());
 
-        fichaAbyssal.setAtributoAgilidade(fichaAbyssalAtualizado.getAtributoAgilidade());
-        fichaAbyssal.setAtributoForca(fichaAbyssalAtualizado.getAtributoForca());
-        fichaAbyssal.setAtributoInteligencia(fichaAbyssalAtualizado.getAtributoInteligencia());
-        fichaAbyssal.setAtributoVigor(fichaAbyssalAtualizado.getAtributoVigor());
-        fichaAbyssal.setAtributoPresenca(fichaAbyssalAtualizado.getAtributoPresenca());
+            fichaAbyssal.calcularPV(fichaAbyssal.getAtributoVigor());
+            fichaAbyssal.calcularPE(fichaAbyssal.getAtributoPresenca());
+            fichaAbyssal.calcularSan();
 
-        fichaAbyssal.calcularPV(fichaAbyssal.getAtributoVigor());
-        fichaAbyssal.calcularPE(fichaAbyssal.getAtributoPresenca());
-        fichaAbyssal.calcularSan();
-
-        return fichaAbyssalRepository.save(fichaAbyssal);
+            return fichaAbyssalRepository.save(fichaAbyssal);}).orElse(null);
 
     }
 }
