@@ -69,13 +69,10 @@ public class FichaAbyssal {
 
         if(this.classes == ClassesOrdemParanormal.COMBATENTE){
             this.pv = (20+atributoVigor) + (nex * (4 + atributoVigor));
-            setPv(this.pv);
         } else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
             this.pv = (16+atributoVigor) + (nex * (3 + atributoVigor));
-            setPv(this.pv);
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
             this.pv = (12+atributoVigor) + (nex * (2 + atributoVigor));
-            setPv(this.pv);
         }
     }
 
@@ -84,13 +81,10 @@ public class FichaAbyssal {
 
         if(this.classes == ClassesOrdemParanormal.COMBATENTE){
             this.pe = (2+atributoPresenca) + (nex * (2 + atributoPresenca));
-            setPe(this.pe);
         }else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
             this.pe = (3+atributoPresenca) + (nex * (3 + atributoPresenca));
-            setPe(this.pe);
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
             this.pe = (4+atributoPresenca) + (nex * (4 + atributoPresenca));
-            setPe(this.pe);
         }
     }
 
@@ -99,13 +93,10 @@ public class FichaAbyssal {
 
         if(this.classes == ClassesOrdemParanormal.COMBATENTE){
             this.sanidade = (12 + (nex * 3)) ;
-            setSanidade(this.sanidade);
         }else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
             this.sanidade = (16 + (nex * 4)) ;
-            setSanidade(this.sanidade);
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA){
             this.sanidade = (20 + (nex * 5)) ;
-            setSanidade(this.sanidade);
         }
     }
 
