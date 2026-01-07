@@ -12,8 +12,15 @@ public class FichaAbyssalService {
     @Autowired
     private FichaAbyssalRepository fichaAbyssalRepository;
 
+
+    @Transactional
+    public FichaAbyssal buscarFichaAbyssalPorId(Long id){
+        return fichaAbyssalRepository.findById(id).orElse(null);
+    }
+
     @Transactional
     public FichaAbyssal createFichaAbyssal(FichaAbyssal fichaAbyssal){
+        fichaAbyssal.atualizarStatus();
         return fichaAbyssalRepository.save(fichaAbyssal);
     }
 
