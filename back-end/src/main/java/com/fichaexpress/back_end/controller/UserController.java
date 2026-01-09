@@ -20,4 +20,9 @@ public class UserController {
         return userService.cadastrarUser(user);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletarFichaAbyssal(@PathVariable Long id){
+        userService.deletarUser(id);
+    }
 }

@@ -26,9 +26,9 @@ public class SecurityConfig {
                 .cors(cors -> cors.configure(httpSecurity))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/user/cadastro").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/user/**").permitAll()
                         // Certifique-se que o nome aqui é IGUAL ao do @RequestMapping do Controller
                         .requestMatchers("/ficha-abyssal/**").permitAll()
                         .anyRequest().authenticated()

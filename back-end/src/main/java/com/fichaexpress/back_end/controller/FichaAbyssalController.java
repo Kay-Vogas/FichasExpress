@@ -33,4 +33,11 @@ public class FichaAbyssalController {
     public FichaAbyssal atualizarFichaAbyssal(@RequestBody FichaAbyssal fichaAbyssal, @PathVariable Long id) {
         return fichaAbyssalService.atualizarFichaAbyssal(id,fichaAbyssal);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletarFichaAbyssal(@PathVariable Long id){
+        fichaAbyssalService.deletarFichaAbyssal(id);
+    }
+
 }

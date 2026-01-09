@@ -45,4 +45,8 @@ public class UserService {
         return confirmacaoSenha;
     }
 
+    @Transactional
+    public void deletarUser(Long id){
+        userRepository.deleteById(id);
+    }
 }

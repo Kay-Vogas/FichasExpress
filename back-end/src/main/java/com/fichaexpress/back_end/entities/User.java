@@ -2,15 +2,13 @@ package com.fichaexpress.back_end.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -29,5 +27,8 @@ public class User {
 
     @Column(nullable = false)
     private String password ;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FichaAbyssal> fichaAbyssal = new  ArrayList<>();
 
 }
