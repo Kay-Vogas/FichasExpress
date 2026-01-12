@@ -1,12 +1,15 @@
 package com.fichaexpress.back_end.services;
 
+import com.fichaexpress.back_end.entities.FichaAbyssal;
 import com.fichaexpress.back_end.entities.User;
+import com.fichaexpress.back_end.repositories.FichaAbyssalRepository;
 import com.fichaexpress.back_end.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +17,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FichaAbyssalRepository fichaAbyssalRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder ;
@@ -48,5 +54,11 @@ public class UserService {
     @Transactional
     public void deletarUser(Long id){
         userRepository.deleteById(id);
+    }
+
+    @Transactional
+    public List<FichaAbyssal> listarFichasAbyssal(Long id){
+          User user = userRepository.findById(id).orElse(null);
+          return user.getFichaAbyssal();
     }
 }

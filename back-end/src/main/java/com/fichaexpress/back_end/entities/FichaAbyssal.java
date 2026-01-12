@@ -1,5 +1,6 @@
 package com.fichaexpress.back_end.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class FichaAbyssal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="user_id",nullable = false)
     private User user;
@@ -45,7 +47,9 @@ public class FichaAbyssal {
     private Integer sanidade;
     private Integer pe;
 
-    private Integer dt;
+    private Integer dtRitual;
+
+    private Integer limitePE;
 
     @Embedded
     private PericiasAbyssal pericias = new PericiasAbyssal();
@@ -62,46 +66,64 @@ public class FichaAbyssal {
         calcularPV(this.atributoVigor);
         calcularPE(this.atributoPresenca);
         calcularSan();
+        calcularLimitePE();
+        calcularDtRitual();
     }
 
-    public void calcularPV(Integer atributoVigor){
-        if(this.classes == null) return;
+    public void calcularPV(Integer atributoVigor) {
+        if (this.classes == null || this.nex == null) return;
 
-        if(this.classes == ClassesOrdemParanormal.COMBATENTE){
-            this.pv = (20+atributoVigor) + (nex * (4 + atributoVigor));
-        } else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
-            this.pv = (16+atributoVigor) + (nex * (3 + atributoVigor));
+        // Aplica a trava de 5 em 5
+        int nexEfetivo = (this.nex / 5);
+
+        if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
+            this.pv = (20 + atributoVigor) + (nexEfetivo * (4 + atributoVigor));
+        } else if (this.classes == ClassesOrdemParanormal.ESPECIALISTA) {
+            this.pv = (16 + atributoVigor) + (nexEfetivo * (3 + atributoVigor));
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
-            this.pv = (12+atributoVigor) + (nex * (2 + atributoVigor));
+            this.pv = (12 + atributoVigor) + (nexEfetivo * (2 + atributoVigor));
         }
     }
 
-    public void calcularPE(Integer atributoPresenca){
-        if(this.classes == null) return;
+    public void calcularPE(Integer atributoPresenca) {
+        if (this.classes == null || this.nex == null) return;
 
-        if(this.classes == ClassesOrdemParanormal.COMBATENTE){
-            this.pe = (2+atributoPresenca) + (nex * (2 + atributoPresenca));
-        }else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
-            this.pe = (3+atributoPresenca) + (nex * (3 + atributoPresenca));
+        int nexEfetivo = (this.nex / 5);
+
+        if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
+            this.pe = (2 + atributoPresenca) + (nexEfetivo * (2 + atributoPresenca));
+        } else if (this.classes == ClassesOrdemParanormal.ESPECIALISTA) {
+            this.pe = (3 + atributoPresenca) + (nexEfetivo * (3 + atributoPresenca));
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
-            this.pe = (4+atributoPresenca) + (nex * (4 + atributoPresenca));
+            this.pe = (4 + atributoPresenca) + (nexEfetivo * (4 + atributoPresenca));
         }
     }
 
-    public void calcularSan(){
-        if(this.classes == null) return;
+    public void calcularSan() {
+        if (this.classes == null || this.nex == null) return;
 
-        if(this.classes == ClassesOrdemParanormal.COMBATENTE){
-            this.sanidade = (12 + (nex * 3)) ;
-        }else if(this.classes == ClassesOrdemParanormal.ESPECIALISTA){
-            this.sanidade = (16 + (nex * 4)) ;
-        } else if (this.classes == ClassesOrdemParanormal.OCULTISTA){
-            this.sanidade = (20 + (nex * 5)) ;
+        int nexEfetivo = (this.nex / 5) ;
+
+        if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
+            this.sanidade = (12 + (nexEfetivo * 3));
+        } else if (this.classes == ClassesOrdemParanormal.ESPECIALISTA) {
+            this.sanidade = (16 + (nexEfetivo * 4));
+        } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
+            this.sanidade = (20 + (nexEfetivo * 5));
         }
     }
 
-    public void calcularDt(){
+    public void calcularDtRitual(){
+        this.dtRitual = 10 + limitePE + this.atributoPresenca;
+    }
 
+    public void calcularLimitePE(){
+
+        int nexEfetivo = (this.nex / 5);
+
+        for(int i = 0; i < nexEfetivo; i++){
+            limitePE++;
+        }
     }
 
     public void calcularAtributosSomatorio(){

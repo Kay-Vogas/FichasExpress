@@ -1,10 +1,14 @@
 package com.fichaexpress.back_end.controller;
 
+import com.fichaexpress.back_end.entities.FichaAbyssal;
 import com.fichaexpress.back_end.entities.User;
+import com.fichaexpress.back_end.repositories.UserRepository;
 import com.fichaexpress.back_end.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -13,6 +17,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/cadastro")
     @ResponseStatus(HttpStatus.CREATED)
@@ -22,7 +28,13 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deletarFichaAbyssal(@PathVariable Long id){
+    public void deletarUser(@PathVariable Long id){
         userService.deletarUser(id);
     }
+
+    @GetMapping("/{id}/fichas-abyssal")
+    public List<FichaAbyssal> listarTodasFichaAbyssal(@PathVariable Long id){
+        return userService.listarFichasAbyssal(id);
+    }
+
 }

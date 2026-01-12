@@ -1,6 +1,8 @@
 package com.fichaexpress.back_end.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,7 +30,10 @@ public class User {
     @Column(nullable = false)
     private String password ;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FichaAbyssal> fichaAbyssal = new  ArrayList<>();
+
+
 
 }
