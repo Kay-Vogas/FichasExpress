@@ -1,3 +1,8 @@
+/* Cores Definidas:
+   Crimson Red : #A4133C
+   Shadow Black : #1A1A1A
+*/
+
 .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +12,9 @@
 }
 
 .action-button {
-    background: linear-gradient(145deg, #7b1dff, #6600ff);
+    /* Substituído o roxo por um gradiente Crimson Red (#A4133C) 
+       com uma variação levemente mais clara (#C11648) para o efeito 3D */
+    background: linear-gradient(145deg, #c11648, #A4133C);
     color: #ffffff;
     padding: 25px 45px;
     border-radius: 12px;
@@ -17,15 +24,18 @@
     border: none;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* Ajustado para uma sombra mais profunda, ideal para o fundo Shadow Black */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .action-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(102, 0, 255, 0.1);
+    /* O "glow" do hover agora reflete a cor Crimson Red */
+    box-shadow: 0 12px 25px rgba(164, 19, 60, 0.3);
+    /* Inversão ou escurecimento leve do gradiente no hover */
+    background: linear-gradient(145deg, #A4133C, #800f2f);
 }

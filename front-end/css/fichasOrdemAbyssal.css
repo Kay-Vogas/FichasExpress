@@ -1,20 +1,20 @@
-/* --- GLOBAIS E VARIÁVEIS DE COR (PALETA ROXA) --- */
+/* --- GLOBAIS E VARIÁVEIS DE COR (PALETA DARK FANTASY) --- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    /* Fundo branco e cards */
-    --bg-color: #f4f4f9; /* Um cinza muito claro, mais suave que branco puro */
-    --card-bg-color: #ffffff;
+    /* Fundo principal e containers */
+    --bg-color: #1A1A1A; /* Shadow Black */
+    --card-bg-color: #242424; /* Um tom levemente acima do preto para os cards */
 
-    /* Tons de Roxo */
-    --primary-color: #7F5AF0; /* Roxo principal para destaques */
-    --primary-color-darker: #613dbc;
-    --light-purple-bg: #f2f0f7; /* Um fundo lilás bem claro para detalhes */
+    /* Tons de Vermelho (Crimson Red) */
+    --primary-color: #A4133C; 
+    --primary-color-darker: #800f2f;
+    --highlight-red-bg: #2d1a1e; /* Um fundo vinho bem escuro para detalhes e hovers */
 
     /* Cores de Texto e Bordas */
-    --text-color: #1a1a2e; /* Texto principal escuro */
-    --text-muted-color: #5a5a72; /* Texto secundário/labels */
-    --border-color: #d1d1e0; /* Borda suave */
+    --text-color: #f0f0f0; /* Texto claro para leitura no escuro */
+    --text-muted-color: #aaaaaa; /* Texto secundário/labels */
+    --border-color: #3d3d3d; /* Borda sutil para o modo escuro */
 }
 
 * {
@@ -45,14 +45,16 @@ main {
     padding: 25px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra mais densa */
 }
 
 .card h2 {
-    color: var(--primary-color-darker);
+    color: var(--primary-color);
     margin-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* --- GRUPOS DE FORMULÁRIO --- */
@@ -68,73 +70,41 @@ main {
     color: var(--text-muted-color);
 }
 
-.form-row {
-    display: flex;
-    gap: 20px;
-    align-items: flex-end;
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
-/* --- ESTILO DOS INPUTS, SELECTS, ETC --- */
+/* --- ESTILO DOS INPUTS E SELECTS --- */
 input[type="text"],
 select {
     width: 100%;
     padding: 10px;
-    background-color: #ffffff;
+    background-color: #121212; /* Inputs mais escuros que o card */
     border: 1px solid var(--border-color);
     border-radius: 5px;
     color: var(--text-color);
     font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
 select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(127, 90, 240, 0.5); /* Sombra de foco roxa */
+    box-shadow: 0 0 8px rgba(164, 19, 60, 0.4); /* Brilho Crimson Red */
 }
 
-/* --- SEÇÕES ESPECÍFICAS --- */
-.char-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
+/* --- SEÇÕES ESPECÍFICAS (FICHA DE RPG) --- */
 .char-info img {
     border-radius: 50%;
     border: 3px solid var(--primary-color);
-}
-
-.char-info .details {
-    flex: 1;
-}
-
-.attributes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    background-color: var(--bg-color);
 }
 
 .attributes-grid .form-group input {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Destaque para atributos de RPG */
     font-weight: bold;
+    color: var(--primary-color);
 }
 
 /* --- TABELA DE PERÍCIAS --- */
-.skills-table {
-    grid-column: 1 / -1; /* Faz a tabela ocupar toda a largura */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
 th, td {
     padding: 12px;
     border: 1px solid var(--border-color);
@@ -142,27 +112,26 @@ th, td {
 }
 
 th {
-    background-color: var(--light-purple-bg);
-    color: var(--primary-color-darker);
+    background-color: var(--primary-color); /* Cabeçalho da tabela em vermelho */
+    color: #ffffff;
     font-weight: bold;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #fbfaff; /* Alternância de cor bem sutil */
+    background-color: #2a2a2a; /* Alternância sutil no modo escuro */
 }
 
 tbody tr:hover {
-    background-color: var(--light-purple-bg); /* Fundo lilás ao passar o mouse */
+    background-color: var(--highlight-red-bg); /* Hover com tom de vinho */
 }
 
 table input[type="text"] {
     background: transparent;
     border: none;
-    text-align: center;
-    font-size: 1rem;
+    color: var(--text-color);
 }
 
 table input[type="text"]:focus {
-    background: var(--card-bg-color);
+    background: #121212;
     border: 1px solid var(--primary-color);
 }

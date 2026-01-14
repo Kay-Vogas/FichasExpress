@@ -1,10 +1,16 @@
+/* Cores Definidas:
+   Crimson Red : #A4133C
+   Shadow Black : #1A1A1A
+*/
+
 .main-header {
-    background-color: #6600ffef;
+    background-color: #A4133C; /* Substituído o roxo pelo Crimson Red */
     color: #ffffff;
     padding: 1rem 0;
     text-align: center;
     font-size: 1.3rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Sombra ligeiramente mais escura para destacar sobre o fundo do site */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
     width: 100%;
 }
 
@@ -20,11 +26,11 @@
 .header-content h1 {
     margin: 0;
     font-size: 1.8rem;
+    /* Underline agora em branco para contraste, ou você pode usar #1A1A1A para um detalhe sutil */
     text-decoration: underline;
     letter-spacing: 1.5px;
     font-family: monospace;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    /* cursor: pointer; */
     color: #ffffff;
 }
 
@@ -46,9 +52,11 @@
     font-size: 1.1rem;
     padding: 8px 15px;
     border-radius: 6px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .header-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    /* Efeito de hover usando um branco translúcido ou o Shadow Black suave */
+    background-color: rgba(26, 26, 26, 0.3); 
+    color: #ffffff;
 }

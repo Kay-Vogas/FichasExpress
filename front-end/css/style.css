@@ -1,10 +1,14 @@
-.root{}
+/* Cores Definidas:
+   Crimson Red : #A4133C
+   Shadow Black : #1A1A1A
+*/
 
-body{
-    background-color: #fafafa;
+body {
+    background-color: #1A1A1A; /* Shadow Black aplicado ao fundo */
+    margin: 0;
 }
 
-.central-container{
+.central-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +19,7 @@ body{
     background-color: #ffffff; 
     padding: 40px; 
     border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra um pouco mais forte para contraste */
     width: 100%;
     max-width: 400px; 
     text-align: center; 
@@ -28,9 +32,10 @@ body{
     text-align: left;
 }
 
-label{
+label {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
+    color: #1A1A1A; /* Texto do label em Shadow Black */
 }
 
 input[type="email"],
@@ -47,16 +52,16 @@ input[type="text"] {
 
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
-input[type="text"] {
+input[type="text"]::placeholder {
     color: #aaa;
 }
 
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
-    border-color: #6600ffef; 
+    border-color: #A4133C; /* Crimson Red no foco */
     outline: none; 
-    box-shadow: 0 0 0 2px #6600ff67; 
+    box-shadow: 0 0 0 2px rgba(164, 19, 60, 0.2); /* Crimson Red suave na sombra */
 }
 
 p {
@@ -64,32 +69,29 @@ p {
     color: #666;
 }
 
-p a{
-    color:#6600ffef ;
+p a {
+    color: #A4133C; /* Links em Crimson Red */
     text-decoration: none;
+    font-weight: bold;
 }
 
-p a:hover{
+p a:hover {
     text-decoration: underline;
-
 }
 
-input[type="button"]{
-    background-color: #6600ffef ;
+input[type="button"] {
+    background-color: #A4133C; /* Botão principal em Crimson Red */
     color: #ffffff;
     padding: 12px 10px;
     margin: 0px 50px;
     border-radius: 3px;
     font-size: 1.1rem;
     border: none;
-    transition: background-color 0.5s;
-    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.2) ;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-input[type="button"]:hover{
-    background-color: #812dffef;
-    
-
+input[type="button"]:hover {
+    background-color: #8a0f32; 
 }
-
-
