@@ -1,0 +1,235 @@
+/* --- VARIAVEIS E RESET --- */
+:root {
+    --bg-color: #1A1A1A;
+    /* Shadow Black */
+    --card-bg: #252525;
+    /* Um tom acima do fundo */
+    --accent-color: #A4133C;
+    /* Crimson Red */
+    --accent-hover: #800f2f;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- HEADER --- */
+.main-header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid #333;
+    padding: 1.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header-nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.header-nav a:hover {
+    color: var(--accent-color);
+}
+
+/* --- HERO SECTION (Apresentação) --- */
+.hero {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+/* --- BOTÕES --- */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.action-button {
+    background: linear-gradient(145deg, #c9184a, var(--accent-color));
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(164, 19, 60, 0.3);
+}
+
+.action-button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(145deg, var(--accent-color), var(--accent-hover));
+    box-shadow: 0 8px 25px rgba(164, 19, 60, 0.5);
+}
+
+.btn-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.hero-links {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.hero-links a {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.hero-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- INFO CARDS (Sobre o Projeto) --- */
+.features-section {
+    background-color: #1f1f1f;
+    padding: 4rem 2rem;
+    margin-top: auto;
+    /* Empurra para baixo se pouco conteudo */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Animação Simples */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    /* Pode adicionar menu hamburguer depois */
+    .button-container {
+        flex-direction: column;
+    }
+
+    .action-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
