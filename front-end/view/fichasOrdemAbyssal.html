@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyssal System</title>
+    <title>Ficha Abyssal - Blindada</title>
 
-    <link rel="stylesheet" href="/css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/fichasOrdemAbyssal.css">
+
 
 </head>
 
@@ -18,239 +20,595 @@
     <header class="main-header">
         <div class="header-content">
             <h1>Fichas Express</h1>
-
             <nav class="header-nav">
                 <ul>
-                    <li><a href="">Minhas Mesas</a></li>
-                    <li><a href="">Comunidade</a></li>
-                    <li><a href="">Pefil</a></li>
+                    <li><a href="#">Minhas Mesas</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                    <li><a href="#">Perfil</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <div class="card">
-            <h2>Informações Básicas</h2>
-            <div class="char-info">
-                <img src="/img/1361728.png" alt="Avatar do Personagem" width="100px">
-                <div class="details">
-                    <div class="form-group">
-                        <label for="inpPersonagem">Personagem:</label>
-                        <input type="text" id="inpPersonagem">
+    <script src="/js/controller/fichaOrdemAbyssalController.js"></script>
+
+    <div class="ficha-container">
+
+        <section class="card area-info">
+            <h2><i class="fa-solid fa-id-card"></i> Identidade</h2>
+            <div class="identity-container">
+                <div class="avatar-container" onclick="document.getElementById('upload-avatar').click()"
+                    title="Clique para alterar a imagem">
+                    <img src="/img/1361728.png" alt="Avatar" class="avatar-img" id="char-avatar">
+                    <input type="file" id="upload-avatar" style="display: none;" accept="image/*">
+                    <div class="avatar-overlay"><i class="fa-solid fa-camera"></i></div>
+                </div>
+                <div class="fields-wrapper">
+                    <div class="flex-row">
+                        <div class="form-group" style="flex: 2;">
+                            <label>Nome</label>
+                            <input type="text" placeholder="Nome do Personagem">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>Jogador</label>
+                            <input type="text">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inpJogador">Jogador(a):</label>
-                        <input type="text" id="inpJogador">
+                    <div class="flex-row">
+                        <div class="form-group"><label>Classe</label><select>
+                                <option>Combatente</option>
+                            </select></div>
+                        <div class="form-group"><label>NEX</label><input type="number"></div>
+                        <div class="form-group"><label>NE</label><input type="number"></div>
+                        <div class="form-group"><label>Origem</label><select>
+                                <option>Vítima</option>
+                            </select></div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="classes">Classe:</label>
-                    <select name="Classes" id="classes">
-                        <option value="combatente">Combatente</option>
-                        <option value="especialista">Especialista</option>
-                        <option value="ocultista">Ocultista</option>
-                    </select>
+
+        <section class="card area-status">
+            <h2><i class="fa-solid fa-heart-pulse"></i> Status</h2>
+
+            <div class="status-row">
+                <span style="color:#ff4d4d; font-weight:bold;">PV (Vida)</span>
+                <div class="status-inputs">
+                    <input type="number" placeholder="Atual">
+                    <input type="number" placeholder="Max">
                 </div>
-                <div class="form-group">
-                    <label for="sub-classes">Sub-Classe:</label>
-                    <select name="subClasses" id="subClasses">
-                        <option value="costureiro">Costureiro</option>
-                        <option value="detetive">Detetive</option>
-                        <option value="lutador">Lutador</option>
-                    </select>
+            </div>
+            <div class="status-row">
+                <span style="color:#4da6ff; font-weight:bold;">SAN (Sanidade)</span>
+                <div class="status-inputs">
+                    <input type="number" placeholder="At">
+                    <input type="number" placeholder="Max">
                 </div>
-                <div class="form-group">
-                    <label for="origem">Origem:</label>
-                    <select name="Origem" id="origem">
-                        <option value="academico">Acadêmico</option>
-                        <option value="atleta">Atleta</option>
-                        <option value="vitima">Vítima</option>
-                        <option value="vitima">Vítima</option>
-                        <option value="vitima">Vítima</option>
-                        <option value="vitima">Vítima</option>
-                        <option value="vitima">Vítima</option>
-                    </select>
+            </div>
+            <div class="status-row">
+                <span style="color:#ffcc00; font-weight:bold;">PE (Esforço)</span>
+                <div class="status-inputs">
+                    <input type="number" placeholder="At">
+                    <input type="number" placeholder="Max">
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="nex">NEX:</label>
-                    <input type="text" id="nex" placeholder="5%">
-                </div>
-                 <div class="form-group">
-                    <label for="ne">NE:</label>
-                    <input type="text" id="ne" placeholder="1">
-                </div>
-            </div>
-        </div>
+            <hr style="border-color: #333; margin: 20px 0; width: 100%;">
 
-        <div class="card">
-            <h2>Atributos & Defesas</h2>
-            <div class="attributes-grid">
-                <div class="form-group">
-                    <label>AGI</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>FOR</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>INT</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>PRE</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>VIG</label>
-                    <input type="text" placeholder="0">
-                </div>
+            <div class="flex-row">
+                <div class="form-group"><label>Defesa</label><input type="number" class="attr-input"></div>
+                <div class="form-group"><label>DT Ritual</label><input type="number" class="attr-input"></div>
             </div>
-             <div class="form-row">
-                <div class="form-group">
-                    <label>Defesa</label>
-                    <input type="text" placeholder="10">
-                </div>
-                <div class="form-group">
-                    <label>Reflexo</label>
-                    <input type="text" placeholder="10">
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>Atributos & Defesas</h2>
-            <div class="attributes-grid">
-                <div class="form-group">
-                    <label>AGI</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>FOR</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>INT</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>PRE</label>
-                    <input type="text" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>VIG</label>
-                    <input type="text" placeholder="0">
-                </div>
-            </div>
-             <div class="form-row">
-                <div class="form-group">
-                    <label>Defesa</label>
-                    <input type="text" placeholder="10">
-                </div>
-                <div class="form-group">
-                    <label>Reflexo</label>
-                    <input type="text" placeholder="10">
-                </div>
-            </div>
-        </div>
+        <section class="card area-attr">
+            <h2><i class="fa-solid fa-dice-d20"></i> Atributos</h2>
 
-        <div class="card skills-table">
-             <h2>Perícias</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Perícia</th>
-                        <th>Modificador</th>
-                        <th>Nível de Treino</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>ACROBACIA </td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>ADESTRAMENTO*</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>ARTES*</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                    <tr>
-                        <td>VONTADE</td>
-                        <td><input type="text" placeholder="0"></td>
-                        <td><input type="text" placeholder="0"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+            <div class="attr-grid">
+                <div class="attr-box">
+                    <button class="btn-attr-roll" onclick="rolarAtributo('agi')">AGI</button>
+                    <input type="number" id="inp-agi" class="attr-input" value="1">
+                </div>
+                <div class="attr-box">
+                    <button class="btn-attr-roll" onclick="rolarAtributo('for')">FOR</button>
+                    <input type="number" id="inp-for" class="attr-input" value="1">
+                </div>
+                <div class="attr-box">
+                    <button class="btn-attr-roll" onclick="rolarAtributo('int')">INT</button>
+                    <input type="number" id="inp-int" class="attr-input" value="1">
+                </div>
+                <div class="attr-box">
+                    <button class="btn-attr-roll" onclick="rolarAtributo('pre')">PRE</button>
+                    <input type="number" id="inp-pre" class="attr-input" value="1">
+                </div>
+                <div class="attr-box">
+                    <button class="btn-attr-roll" onclick="rolarAtributo('vig')">VIG</button>
+                    <input type="number" id="inp-vig" class="attr-input" value="1">
+                </div>
+            </div>
+
+            <div id="resultado-atributo" class="attr-result-display">
+                Clique no nome para rolar
+            </div>
+        </section>
+
+        <section class="card area-dice">
+            <h2><i class="fa-solid fa-dice"></i> Dados</h2>
+
+            <div class="dice-grid">
+                <button class="btn-dice" onclick="rolar(4)">d4</button>
+                <button class="btn-dice" onclick="rolar(6)">d6</button>
+                <button class="btn-dice" onclick="rolar(8)">d8</button>
+                <button class="btn-dice" onclick="rolar(10)">d10</button>
+                <button class="btn-dice" onclick="rolar(12)">d12</button>
+                <button class="btn-dice" onclick="rolar(20)">d20</button>
+                <button class="btn-dice" onclick="rolar(100)">d100</button>
+                <button class="btn-dice" style="color: #aaa;" onclick="limpar()">C</button>
+            </div>
+
+            <div class="dice-display">
+                <span id="label-dado">Role um dado...</span>
+                <span id="resultado-valor" class="dice-result-val">-</span>
+            </div>
+        </section>
+
+        <section class="card area-san-dice">
+            <h2 style="color: #4da6ff; border-color: #3d3d3d;">
+                <i class="fa-solid fa-brain"></i> Dano Mental
+            </h2>
+
+            <div class="dice-grid">
+                <button class="btn-dice btn-san" onclick="rolarSan(4)">d4</button>
+                <button class="btn-dice btn-san" onclick="rolarSan(6)">d6</button>
+                <button class="btn-dice btn-san" onclick="rolarSan(8)">d8</button>
+                <button class="btn-dice btn-san" onclick="rolarSan(10)">d10</button>
+            </div>
+
+            <div class="dice-display san-display">
+                <span id="label-san">Perda de Sanidade:</span>
+                <span id="resultado-san" class="dice-result-val san-result-val">-</span>
+            </div>
+        </section>
+
+
+
+        <section class="card area-skills skills-table">
+            <h2><i class="fa-solid fa-book-open"></i> Perícias</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Perícia</th>
+                            <th>Treinamento</th>
+                            <th><i class="fa-solid fa-dice-d20"></i> Dado</th>
+                            <th>Bônus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Acrobacia (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Adestramento (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Artes (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Atletismo (FOR)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Atualidades (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Ciências (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Crime (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Diplomacia (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Enganação (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Fortitude (VIG)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Furtividade (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Iniciativa (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Intimidação (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Intuição (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Investigação (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Luta (FOR)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Medicina (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Ocultismo (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Percepção (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Pilotagem (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Pontaria (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Profissão (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Reflexos (AGI)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Religião (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Sobrevivência (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Tática (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Tecnologia (INT)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Vontade (PRE)</td>
+                            <td>
+                                <select>
+                                    <option value="0">NENHUM</option>
+                                    <option value="5">TREINADO</option>
+                                    <option value="10">VETERANO</option>
+                                    <option value="15">ESPECIALISTA</option>
+                                    <option value="20">EXPERT</option>
+                                </select>
+                            </td>
+                            <td><input type="number"></td>
+                            <td><input type="number"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card area-abilities">
+            <h2><i class="fa-solid fa-bolt"></i> Habilidades</h2>
+
+            <div id="container-habilidades">
+
+                <div class="ability-box">
+                    <div class="ability-header">
+                        <input type="text" class="ability-name" placeholder="Nome da Habilidade">
+                        <input type="number" class="ability-cost" placeholder="PE">
+                        <button class="btn-delete" onclick="removerHabilidade(this)"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <textarea placeholder="Descrição..."></textarea>
+                </div>
+
+            </div>
+
+            <button class="btn-add" onclick="adicionarHabilidade()">
+                <i class="fa-solid fa-plus"></i> Nova Habilidade
+            </button>
+        </section>
+
+
+
+    </div>
 
 </body>
 

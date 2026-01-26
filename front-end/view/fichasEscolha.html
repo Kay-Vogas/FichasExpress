@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Mesas</title>
+    <title>Dashboard - Fichas Express</title>
 
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/fichasHome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,32 +18,111 @@
     <header class="main-header">
         <div class="header-content">
             <h1>Fichas Express</h1>
-
             <nav class="header-nav">
                 <ul>
-                    <li><a href="">Minhas Mesas</a></li>
-                    <li><a href="">Comunidade</a></li>
-                    <li><a href="">Pefil</a></li>
+                    <li><a href="#">Minhas Mesas</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                    <li><a href="#">Perfil</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="main-content">
-        <h2>Suas Fichas!!</h2>
+        <h2>Painel do Agente</h2>
+        <p>Inicie uma nova missão criando uma ficha ou acesse seus arquivos confidenciais abaixo.</p>
 
-        <div>
-
-            <div class="button-container">
-                <a href="#" class="action-button"></a>
-            </div>
-
+        <div class="button-container">
+            <a href="/view/criar-ficha-abyssal.html" class="action-button">
+                <img 
+                    src="https://media.discordapp.net/attachments/1037502971145097239/1443734037314408538/Logo_1_parte_1.png?ex=696f5c59&is=696e0ad9&hm=9992748332447e011fb07741661470e1610ff3493f6f4bf2353ec40d91d227a6&=&format=webp&quality=lossless" 
+                    alt="Logo Abyssal" 
+                    class="btn-icon"
+                >
+                Nova Ficha Abyssal
+            </a>
         </div>
     </main>
 
+    <section class="fichas-section">
+        <h3 class="section-title">Arquivos Existentes</h3>
 
-    </main>
+        <div class="fichas-grid" id="container-fichas">
+            
+            <div class="ficha-card">
+                <div class="ficha-info">
+                    <h3>Elizabeth</h3>
+                    
+                    <div class="detail-row">
+                        <span>Classe</span>
+                        <strong>Ocultista</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NEX</span>
+                        <strong>15%</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NE</span>
+                        <strong>15</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Origem</span>
+                        <strong>Acadêmico</strong>
+                    </div>
+                </div>
+                <a href="#" class="btn-acessar">Abrir Arquivo</a>
+            </div>
+
+            <div class="ficha-card">
+                <div class="ficha-info">
+                    <h3>Arthur</h3>
+                    
+                    <div class="detail-row">
+                        <span>Classe</span>
+                        <strong>Combatente</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NEX</span>
+                        <strong>50%</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NE</span>
+                        <strong>15</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Origem</span>
+                        <strong>Policial</strong>
+                    </div>
+                </div>
+                <a href="#" class="btn-acessar">Abrir Arquivo</a>
+            </div>
+
+            <div class="ficha-card">
+                <div class="ficha-info">
+                    <h3>Kian</h3>
+                    
+                    <div class="detail-row">
+                        <span>Classe</span>
+                        <strong>Especialista</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NEX</span>
+                        <strong>99%</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>NE</span>
+                        <strong>15</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Origem</span>
+                        <strong>Desconhecida</strong>
+                    </div>
+                </div>
+                <a href="#" class="btn-acessar">Abrir Arquivo</a>
+            </div>
+
+        </div>
+    </section>
 
 </body>
-
 </html>

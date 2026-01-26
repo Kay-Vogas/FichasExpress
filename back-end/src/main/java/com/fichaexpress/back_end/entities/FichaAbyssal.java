@@ -29,6 +29,8 @@ public class FichaAbyssal {
 
     private String personagem;
 
+    private String origem;
+
     private Integer nex;
     private Integer ne;
 

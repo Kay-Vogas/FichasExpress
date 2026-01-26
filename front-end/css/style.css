@@ -4,7 +4,8 @@
 */
 
 body {
-    background-color: #1A1A1A; /* Shadow Black aplicado ao fundo */
+    background-color: #1A1A1A;
+    /* Shadow Black aplicado ao fundo */
     margin: 0;
 }
 
@@ -16,38 +17,40 @@ body {
 }
 
 .box {
-    background-color: #ffffff; 
-    padding: 40px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra um pouco mais forte para contraste */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    /* Sombra um pouco mais forte para contraste */
     width: 100%;
-    max-width: 400px; 
-    text-align: center; 
+    max-width: 400px;
+    text-align: center;
 }
 
 .inputs-box {
     display: flex;
-    flex-direction: column; 
-    gap: 30px; 
+    flex-direction: column;
+    gap: 30px;
     text-align: left;
 }
 
 label {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
-    color: #1A1A1A; /* Texto do label em Shadow Black */
+    color: #1A1A1A;
+    /* Texto do label em Shadow Black */
 }
 
 input[type="email"],
 input[type="password"],
 input[type="text"] {
-    width: calc(100% - 20px); 
+    width: calc(100% - 20px);
     padding: 15px 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 input[type="email"]::placeholder,
@@ -59,9 +62,11 @@ input[type="text"]::placeholder {
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
-    border-color: #A4133C; /* Crimson Red no foco */
-    outline: none; 
-    box-shadow: 0 0 0 2px rgba(164, 19, 60, 0.2); /* Crimson Red suave na sombra */
+    border-color: #A4133C;
+    /* Crimson Red no foco */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(164, 19, 60, 0.2);
+    /* Crimson Red suave na sombra */
 }
 
 p {
@@ -70,7 +75,8 @@ p {
 }
 
 p a {
-    color: #A4133C; /* Links em Crimson Red */
+    color: #A4133C;
+    /* Links em Crimson Red */
     text-decoration: none;
     font-weight: bold;
 }
@@ -80,7 +86,8 @@ p a:hover {
 }
 
 input[type="button"] {
-    background-color: #A4133C; /* Botão principal em Crimson Red */
+    background-color: #A4133C;
+    /* Botão principal em Crimson Red */
     color: #ffffff;
     padding: 12px 10px;
     margin: 0px 50px;
@@ -93,5 +100,76 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: #8a0f32; 
+    background-color: #8a0f32;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.main-content h2 {
+    font-size: 2.8rem;
+    color: #A4133C;
+    margin-bottom: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-content p {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    /* Cinza claro para contrastar com fundo escuro */
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.action-button {
+    background: linear-gradient(145deg, #c9184a, #A4133C);
+    color: #ffffff;
+    padding: 25px 45px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    /* Importante para alinhar imagem e texto */
+    align-items: center;
+    gap: 15px;
+    /* Espaço entre o ícone e o texto */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.action-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(164, 19, 60, 0.3);
+    background: linear-gradient(145deg, #A4133C, #800f2f);
+}
+
+/* --- CSS EXTRA PARA A IMAGEM --- */
+.btn-icon {
+    height: 45px;
+    /* Define a altura para caber no botão */
+    width: auto;
+    /* Mantém a proporção */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+    /* Sombra leve no logo */
 }

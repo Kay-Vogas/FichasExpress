@@ -13,33 +13,35 @@
     <div class="central-container">
 
       <div class="box">
-        <form action="AutenticaoController" method="post">
+        <form action="registerController" method="post">
           
           <div class="inputs-box">
             <div>
-              <label for="">Nome:</label>
-              <input type="text" name="nome" id="nome" placeholder="Nome">
+              <label for="">Player:</label>
+              <input type="text" name="player" id="player" placeholder="Nome">
             </div>
 
             <div>
               <label for="">Email:</label>
-              <input type="email" name="login" id="login" placeholder="Seu.email@email.com">
+              <input type="email" name="email" id="email" placeholder="Seu.email@email.com">
             </div>
 
             <div>
               <label for="">Senha:</label>
-              <input type="password" name="senha" id="senha" placeholder="Senha">
+              <input type="password" name="password" id="password" placeholder="Senha">
             </div>
             
             <div>
               <label for="">Confirmar Senha:</label>
-              <input type="password" name="senha" id="senha" placeholder="Confirmar Senha">
+              <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar Senha">
             </div>
 
-            <input type="button" value="Registrar">
+            <input id="btn-register" type="button" value="Registrar">
           </div>
         </form>
       </div>
     </div>
+
+    <script src="/js/controller/registerController.js"></script>
 </body>
 </html>

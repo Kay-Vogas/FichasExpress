@@ -1,5 +1,7 @@
 package com.fichaexpress.back_end.services;
 
+import com.fichaexpress.back_end.dto.LoginResponseDTO;
+import com.fichaexpress.back_end.dto.UserDTO;
 import com.fichaexpress.back_end.entities.FichaAbyssal;
 import com.fichaexpress.back_end.entities.User;
 import com.fichaexpress.back_end.repositories.FichaAbyssalRepository;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,38 +28,56 @@ public class UserService {
     @Transactional
     public User cadastrarUser(User user){
             String senhaPura =  user.getPassword();
-            String senhaCodificada = passwordEncoder.encode(senhaPura);
-            user.setPassword(senhaCodificada);
-            return userRepository.save(user);
+
+            try {
+
+                String senhaCodificada = passwordEncoder.encode(senhaPura);
+                user.setPassword(senhaCodificada);
+                return userRepository.save(user);
+
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e);
+            }
     }
 
 
-    @Transactional
-    public Boolean loginUser(User user){
+    @Transactional(readOnly = true) // readOnly é mais rápido para login (apenas leitura)
+    public LoginResponseDTO loginUser(UserDTO dadosLogin){
 
-        Optional<User> usuarioNoBanco = userRepository.findByEmail(user.getEmail());
+        User usuarioNoBanco = userRepository.findByEmail(dadosLogin.getEmail())
+                .orElse(null);
 
-        if(usuarioNoBanco.isEmpty()){
-            return false;
+        if(usuarioNoBanco == null){
+            return null;
+        }
+        if (passwordEncoder.matches(dadosLogin.getPassword(), usuarioNoBanco.getPassword())) {
+
+            return new LoginResponseDTO(
+                    usuarioNoBanco.getId(),
+                    usuarioNoBanco.getPlayer(),
+                    "Login realizado com sucesso!"
+            );
         }
 
-        User usuarioEncontradoBanco = usuarioNoBanco.get();
-        String senhaPura =  user.getPassword();
-        String hashSalvoNoBanco = usuarioEncontradoBanco.getPassword();
-
-        Boolean confirmacaoSenha = passwordEncoder.matches(senhaPura,hashSalvoNoBanco);
-
-        return confirmacaoSenha;
+        return null;
     }
 
     @Transactional
     public void deletarUser(Long id){
-        userRepository.deleteById(id);
+        try {
+            userRepository.deleteById(id);
+        }catch (RuntimeException e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Transactional
     public List<FichaAbyssal> listarFichasAbyssal(Long id){
-          User user = userRepository.findById(id).orElse(null);
-          return user.getFichaAbyssal();
+          try {
+              User user = userRepository.findById(id).orElse(null);
+              return user.getFichaAbyssal();
+          }catch (RuntimeException e){
+              throw new RuntimeException(e);
+          }
     }
 }

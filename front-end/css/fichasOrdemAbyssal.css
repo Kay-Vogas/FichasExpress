@@ -1,137 +1,490 @@
-/* --- GLOBAIS E VARIÁVEIS DE COR (PALETA DARK FANTASY) --- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* =========================================
+           CSS BLINDADO E ATUALIZADO
+           ========================================= */
 
 :root {
-    /* Fundo principal e containers */
-    --bg-color: #1A1A1A; /* Shadow Black */
-    --card-bg-color: #242424; /* Um tom levemente acima do preto para os cards */
-
-    /* Tons de Vermelho (Crimson Red) */
-    --primary-color: #A4133C; 
-    --primary-color-darker: #800f2f;
-    --highlight-red-bg: #2d1a1e; /* Um fundo vinho bem escuro para detalhes e hovers */
-
-    /* Cores de Texto e Bordas */
-    --text-color: #f0f0f0; /* Texto claro para leitura no escuro */
-    --text-muted-color: #aaaaaa; /* Texto secundário/labels */
-    --border-color: #3d3d3d; /* Borda sutil para o modo escuro */
+    --bg-color: #1A1A1A;
+    --card-bg: #242424;
+    --input-bg: #121214;
+    --primary: #A4133C;
+    --primary-hover: #ff0a54;
+    --text: #f0f0f0;
+    --border: #3d3d3d;
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
 }
 
-/* --- LAYOUT PRINCIPAL E CARDS --- */
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 20px;
+img,
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+/* --- GRID LAYOUT --- */
+.ficha-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Desktop Layout */
+@media (min-width: 1100px) {
+    .ficha-container {
+        grid-template-columns: 350px minmax(0, 1fr);
+        /* Adicionei 'dice' na coluna da esquerda */
+        grid-template-rows: auto auto auto auto 1fr auto;
+        grid-template-areas:
+            "info info"
+            "status skills"
+            "attr skills"
+            "dice skills"
+            ". skills"
+            /* Espaço vazio se sobrar */
+            "abilities abilities";
+        align-items: start;
+    }
+
+    .area-info {
+        grid-area: info;
+    }
+
+    .area-status {
+        grid-area: status;
+    }
+
+    .area-attr {
+        grid-area: attr;
+    }
+
+    .area-dice {
+        grid-area: dice;
+    }
+
+    /* Nova Área */
+    .area-skills {
+        grid-area: skills;
+        height: 100%;
+    }
+
+    .area-abilities {
+        grid-area: abilities;
+    }
+}
+
+/* --- CARDS --- */
 .card {
-    background-color: var(--card-bg-color);
-    padding: 25px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra mais densa */
-}
-
-.card h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* --- GRUPOS DE FORMULÁRIO --- */
-.form-group {
-    margin-bottom: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: var(--text-muted-color);
-}
-
-/* --- ESTILO DOS INPUTS E SELECTS --- */
-input[type="text"],
-select {
     width: 100%;
-    padding: 10px;
-    background-color: #121212; /* Inputs mais escuros que o card */
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    min-width: 0;
 }
 
-input[type="text"]:focus,
-select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 8px rgba(164, 19, 60, 0.4); /* Brilho Crimson Red */
+h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+    margin: 0 0 20px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* --- SEÇÕES ESPECÍFICAS (FICHA DE RPG) --- */
-.char-info img {
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
-    background-color: var(--bg-color);
+/* --- INPUTS --- */
+.form-group {
+    margin-bottom: 10px;
+    width: 100%;
 }
 
-.attributes-grid .form-group input {
-    text-align: center;
-    font-size: 1.5rem; /* Destaque para atributos de RPG */
+label {
+    display: block;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 5px;
     font-weight: bold;
-    color: var(--primary-color);
+    text-transform: uppercase;
 }
 
-/* --- TABELA DE PERÍCIAS --- */
-th, td {
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    text-align: left;
+input,
+select,
+textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* --- IDENTIDADE --- */
+.identity-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.fields-wrapper {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flex-row {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .flex-row {
+        flex-direction: column;
+    }
+}
+
+/* --- STATUS --- */
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status-inputs {
+    display: flex;
+    gap: 5px;
+    width: 60%;
+}
+
+.status-inputs input {
+    text-align: center;
+}
+
+/* --- ATRIBUTOS --- */
+.attr-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 400px) {
+    .attr-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.attr-input {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* --- ROLADOR DE DADOS (NOVO CSS) --- */
+.dice-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 botões por linha */
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-dice {
+    background-color: var(--input-bg);
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 10px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    transition: all 0.2s;
+}
+
+.btn-dice:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(164, 19, 60, 0.5);
+}
+
+.btn-dice:active {
+    transform: scale(0.95);
+}
+
+.dice-display {
+    background: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dice-display span {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.dice-result-val {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.dice-anim {
+    animation: pop 0.2s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- PERÍCIAS --- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    flex: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th {
-    background-color: var(--primary-color); /* Cabeçalho da tabela em vermelho */
-    color: #ffffff;
+    text-align: left;
+    background: var(--card-bg);
+    padding: 8px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+td {
+    padding: 5px;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td input {
+    text-align: center;
+    background: transparent;
+    border: 1px solid transparent;
+    width: 100%;
+}
+
+td input:focus {
+    background: var(--input-bg);
+    border-color: var(--primary);
+}
+
+/* --- HABILIDADES --- */
+.ability-box {
+    background: #2b2b2b;
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.ability-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ability-name {
+    border: none;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    flex: 1;
+}
+
+.ability-cost {
+    width: 80px;
+    text-align: center;
+}
+
+.btn-add {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 2px dashed #555;
+    color: #aaa;
+    cursor: pointer;
+    text-transform: uppercase;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #2a2a2a; /* Alternância sutil no modo escuro */
+.btn-add:hover {
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
-tbody tr:hover {
-    background-color: var(--highlight-red-bg); /* Hover com tom de vinho */
+/* --- ESTILOS NOVOS PARA AS FUNCIONALIDADES --- */
+
+/* 1. Avatar Trocável */
+.avatar-container {
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
 }
 
-table input[type="text"] {
+.avatar-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 1.5rem;
+}
+
+.avatar-container:hover .avatar-overlay {
+    opacity: 1;
+}
+
+/* 2. Botões de Atributos */
+.btn-attr-roll {
     background: transparent;
     border: none;
-    color: var(--text-color);
+    color: #aaa;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    width: 100%;
+    transition: color 0.2s;
 }
 
-table input[type="text"]:focus {
-    background: #121212;
-    border: 1px solid var(--primary-color);
+.btn-attr-roll:hover {
+    color: var(--primary);
+    text-shadow: 0 0 5px var(--primary);
+}
+
+.attr-result-display {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 10px;
+    min-height: 20px;
+    border-top: 1px solid #333;
+    padding-top: 5px;
+}
+
+/* 3. Botão de Deletar Habilidade */
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.btn-delete:hover {
+    color: #ff4d4d;
+}
+
+/* --- ATUALIZAÇÃO DA TABELA DE PERÍCIAS --- */
+
+/* Ajuste das larguras das colunas */
+.skills-table th:nth-child(1) { width: 35%; } /* Nome */
+.skills-table th:nth-child(2) { width: 30%; } /* Treinamento */
+.skills-table th:nth-child(3) { width: 15%; } /* Dado */
+.skills-table th:nth-child(4) { width: 20%; } /* Bônus */
+
+/* Estilo do Select dentro da tabela */
+.skills-table select {
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+    /* Remove a seta padrão do navegador para ficar mais limpo */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.skills-table select:focus {
+    background-color: var(--input-bg);
+    color: var(--text);
+    outline: none;
+}
+
+/* Cor das opções quando abre o menu */
+.skills-table option {
+    background-color: var(--card-bg);
+    color: var(--text);
+}
+
+/* Centralizando o ícone no cabeçalho */
+.skills-table th i {
+    margin-right: 5px;
 }
