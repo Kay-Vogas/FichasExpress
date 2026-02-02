@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Entity
@@ -45,16 +47,49 @@ public class FichaAbyssal {
 
     private boolean Subclasse;
 
+    private String trilha;
+
+    //STATUS
     private Integer pv;
+    private Integer pvAtual;
     private Integer sanidade;
+    private Integer sanidadeAtual;
     private Integer pe;
+    private Integer peAtual;
 
     private Integer dtRitual;
-
     private Integer limitePE;
+
+    //NOVO (Tipo de Defesas)
+    private Integer defesa;
+
+    private Integer reflexo;
+
+    //NOVO
+    private Integer ferimentoLeveMax;
+    private Integer ferimentoLeveAtual;
+
+    //NOVO
+    private Integer ferimentoGraveAtual = 0;
+
+    //NOVO
+    private Boolean feridaAtiva = false;
+
 
     @Embedded
     private PericiasAbyssal pericias = new PericiasAbyssal();
+
+    @ElementCollection
+    @CollectionTable(name = "ficha_habilidades", joinColumns = @JoinColumn(name = "ficha_id"))
+    private List<HabilidadesAbyssal> habilidades = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "ficha_rituais", joinColumns = @JoinColumn(name = "ficha_id"))
+    private List<RitualAbyssal> rituais = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "ficha_inventario", joinColumns = @JoinColumn(name = "ficha_id"))
+    private List<InventarioAbyssal> inventario = new ArrayList<>();
 
     //Dados de REDUÇÃO DE SANIDADE
     private Integer dadoSanidade;
@@ -76,21 +111,24 @@ public class FichaAbyssal {
         if (this.classes == null || this.nex == null) return;
 
         // Aplica a trava de 5 em 5
-        int nexEfetivo = (this.nex / 5);
+        int nexEfetivo = (this.nex / 5) - 1;
 
         if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
             this.pv = (20 + atributoVigor) + (nexEfetivo * (4 + atributoVigor));
+
         } else if (this.classes == ClassesOrdemParanormal.ESPECIALISTA) {
             this.pv = (16 + atributoVigor) + (nexEfetivo * (3 + atributoVigor));
+
         } else if (this.classes == ClassesOrdemParanormal.OCULTISTA) {
             this.pv = (12 + atributoVigor) + (nexEfetivo * (2 + atributoVigor));
+
         }
     }
 
     public void calcularPE(Integer atributoPresenca) {
         if (this.classes == null || this.nex == null) return;
 
-        int nexEfetivo = (this.nex / 5);
+        int nexEfetivo = (this.nex / 5) - 1 ;
 
         if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
             this.pe = (2 + atributoPresenca) + (nexEfetivo * (2 + atributoPresenca));
@@ -104,7 +142,7 @@ public class FichaAbyssal {
     public void calcularSan() {
         if (this.classes == null || this.nex == null) return;
 
-        int nexEfetivo = (this.nex / 5) ;
+        int nexEfetivo = (this.nex / 5) -1 ;
 
         if (this.classes == ClassesOrdemParanormal.COMBATENTE) {
             this.sanidade = (12 + (nexEfetivo * 3));
@@ -121,15 +159,44 @@ public class FichaAbyssal {
 
     public void calcularLimitePE(){
 
-        int nexEfetivo = (this.nex / 5);
+        int nexEfetivo = (this.nex / 5) - 1;
 
         for(int i = 0; i < nexEfetivo; i++){
             limitePE++;
         }
+
+        //REAPROVEITANDO CALCULAR O NE
+        this.ne = nexEfetivo - 1 ;
     }
 
-    public void calcularAtributosSomatorio(){
+    //NOVO (Terminar)
+    private void reducaoSanidadecomBaseNex(){
 
     }
+    //NOVO (Terminar)
+    private void calculoDefesa(){
+
+    }
+    //NOVO (Terminar)
+    private void calculoReflexo(){
+
+    }
+    //NOVO (Terminar)
+    private void verificaFeridasAtivas(){
+
+    }
+    //NOVO (Terminar)
+    private void atualizaFeridasLeves(){
+
+    }
+    //NOVO (Terminar)
+    private void atualizaFeridasGraves(){
+
+    }
+    //NOVO (Terminar)
+    private void condicoesAtiva(){
+        
+    }
+
 
 }

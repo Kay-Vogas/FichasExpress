@@ -1,5 +1,6 @@
 package com.fichaexpress.back_end.services;
 
+import com.fichaexpress.back_end.dto.FichaAbyssalDTO;
 import com.fichaexpress.back_end.dto.LoginResponseDTO;
 import com.fichaexpress.back_end.dto.UserDTO;
 import com.fichaexpress.back_end.entities.FichaAbyssal;
@@ -71,13 +72,30 @@ public class UserService {
         }
     }
 
+    //Listar a Ficha Completa
+
     @Transactional
     public List<FichaAbyssal> listarFichasAbyssal(Long id){
           try {
               User user = userRepository.findById(id).orElse(null);
               return user.getFichaAbyssal();
+
           }catch (RuntimeException e){
               throw new RuntimeException(e);
           }
+    }
+
+    //Listar DTO de Ficha Abyssal
+
+    @Transactional
+    public List<FichaAbyssalDTO> listarFichaAbyssalDTO(Long id){
+        try {
+            User user = userRepository.findById(id).orElse(null);
+
+            return user.getFichaAbyssal().stream().map(fichaAbyssal -> new FichaAbyssalDTO(fichaAbyssal)).toList();
+
+        }catch (RuntimeException e){
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,6 +1,5 @@
 package com.fichaexpress.back_end.entities;
 
-
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +11,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HabilidadesAbyssal {
+public class RitualAbyssal {
 
     private String nome;
+    private String elemento;
     private Integer custoPE;
     private String descricao;
+
 }

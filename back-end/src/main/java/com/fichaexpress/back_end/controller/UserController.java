@@ -1,5 +1,6 @@
 package com.fichaexpress.back_end.controller;
 
+import com.fichaexpress.back_end.dto.FichaAbyssalDTO;
 import com.fichaexpress.back_end.entities.FichaAbyssal;
 import com.fichaexpress.back_end.entities.User;
 import com.fichaexpress.back_end.repositories.UserRepository;
@@ -32,9 +33,18 @@ public class UserController {
         userService.deletarUser(id);
     }
 
+    //Listar a Ficha Completa
+
     @GetMapping("/{id}/fichas-abyssal")
     public List<FichaAbyssal> listarTodasFichaAbyssal(@PathVariable Long id){
         return userService.listarFichasAbyssal(id);
+    }
+
+    //Listar DTO de Ficha Abyssal
+
+    @GetMapping("/{id}/fichas-abyssal-dto")
+    public List<FichaAbyssalDTO> listarTodasFichaAbyssalDTO(@PathVariable Long id){
+        return userService.listarFichaAbyssalDTO(id);
     }
 
 }
