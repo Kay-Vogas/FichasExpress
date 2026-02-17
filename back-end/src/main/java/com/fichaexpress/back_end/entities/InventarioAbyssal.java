@@ -17,4 +17,5 @@ public class InventarioAbyssal {
     private String categoria;
     private Integer espaco;
     private String descricao;
+    private Integer bonusDoItem;
 }

@@ -42,6 +42,13 @@ public class FichaAbyssal {
     private Integer atributoInteligencia;
     private Integer atributoVigor;
 
+    //NOVO
+//    private Integer modificadorAgilidade = (this.atributoAgilidade - 1) * 2;
+//    private Integer modificadorForca = (this.atributoForca - 1) * 2;
+//    private Integer modificadorPresenca = (this.atributoPresenca - 1) * 2;    
+//    private Integer modificadorInteligencia = (this.atributoInteligencia - 1) * 2;
+//    private Integer modificadorVigor = (this.atributoVigor - 1) * 2;
+
     @Enumerated(EnumType.STRING)
     private ClassesOrdemParanormal classes;
 
@@ -66,15 +73,15 @@ public class FichaAbyssal {
     private Integer reflexo;
 
     //NOVO
-    private Integer ferimentoLeveMax;
-    private Integer ferimentoLeveAtual;
+    private Integer ferimentoLeveMax = 0 ;
+    private Integer ferimentoLeveAtual = 0;
 
     //NOVO
     private Integer ferimentoGraveAtual = 0;
 
     //NOVO
     private Boolean feridaAtiva = false;
-
+    private Integer feridas = 0;
 
     @Embedded
     private PericiasAbyssal pericias = new PericiasAbyssal();
@@ -92,7 +99,7 @@ public class FichaAbyssal {
     private List<InventarioAbyssal> inventario = new ArrayList<>();
 
     //Dados de REDUÇÃO DE SANIDADE
-    private Integer dadoSanidade;
+    private Integer dadoSanidade = 0;
 
     public void dadoDeSanidade(Integer dadoSanidade) {
         Random ValorDadoSanidade = new Random();
@@ -169,29 +176,60 @@ public class FichaAbyssal {
         this.ne = nexEfetivo - 1 ;
     }
 
-    //NOVO (Terminar)
+    //NOVO
     private void reducaoSanidadecomBaseNex(){
-
+        if(this.nex >= 40 && this.nex<=55){
+            dadoSanidade = 4;
+        }else if(this.nex >= 60 && this.nex<=75){
+            dadoSanidade = 6;
+        } else if (this.nex >= 80 && this.nex<=95) {
+            dadoSanidade =8;
+        }else if (this.nex == 99) {
+            dadoSanidade = 10;
+        }
     }
-    //NOVO (Terminar)
+    //NOVO
     private void calculoDefesa(){
 
-    }
-    //NOVO (Terminar)
-    private void calculoReflexo(){
+        Integer modificadorAgilidade = (this.atributoAgilidade - 1) * 2;
 
+        //Será inserido assim que o Player ativar o Item ou Ritual
+        Integer bonusDeRitualDefesa = 0;
+        Integer bonusDoItemDefesa = 0 ;
+
+        this.defesa = modificadorAgilidade + 10 + bonusDoItemDefesa + bonusDeRitualDefesa;
     }
     //NOVO (Terminar)
+    private void calculoEsquiva(){
+        Integer bonusDeRitualDefesa = 0;
+        Integer bonusDoItemDefesa = 0 ;
+
+        this.reflexo = this.defesa + this.pericias.getReflexos().getBonus();
+    }
+    //NOVO (Terminar) (Verificar Lógica com Alay)
     private void verificaFeridasAtivas(){
 
-    }
-    //NOVO (Terminar)
-    private void atualizaFeridasLeves(){
+        if(pv != pvAtual && feridaAtiva == true){
 
-    }
-    //NOVO (Terminar)
-    private void atualizaFeridasGraves(){
+            Integer modificadorVigor = (this.atributoVigor - 1) * 2;
 
+            Integer limiteDeFeridas = 3 + this.ne + modificadorVigor;
+
+            //Atualização de Feridas Leves
+            if(limiteDeFeridas >= feridas){
+                ferimentoLeveAtual++;
+                //Fazer um Array aonde guarda na ordem dos ferimentos leves causados para saber precisar de curado
+
+                // Implementar Lógica de Debuff
+            }
+
+            if(ferimentoLeveAtual == 3){
+                ferimentoGraveAtual++;
+                //Fazer um Array aonde guarda na ordem dos ferimentos leves causados para saber precisar de curado
+
+                // Implementar Lógica de Debuff
+            }
+        }
     }
     //NOVO (Terminar)
     private void condicoesAtiva(){
